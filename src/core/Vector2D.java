@@ -1,8 +1,9 @@
 package core;
 
-import controller.Controller;
+
 
 public class Vector2D {
+
     private double x;
     private double y;
 
@@ -11,18 +12,19 @@ public class Vector2D {
         this.y = y;
     }
 
-    public void multiply(double speed) {
-        x*=speed;
-        y*=speed;
+    public double length() {
+        return Math.sqrt(x * x + y * y);
+    }
 
+    public void normalize() {
+        double length = length();
+        x = x == 0 ? 0 : x/length;
+        y = y == 0 ? 0 : y/length;
     }
-    public double lenght() {
-        return Math.sqrt(x * x + y);
-    }
-        public void normalize(){
-        double length = lenght();
-        x = x == 0 ? 0: x/length;
-            y= y == 0 ? 0: y/length;
+
+    public void multiply(double speed) {
+        x *= speed;
+        y *= speed;
     }
 
     public double getX() {
@@ -33,3 +35,4 @@ public class Vector2D {
         return y;
     }
 }
+

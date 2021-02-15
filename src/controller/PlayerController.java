@@ -11,22 +11,22 @@ public PlayerController(Input input){
     this.input = input;
 }
     @Override
-    public boolean isRequstingUp() {
+    public boolean isRequestingUp() {
         return input.isPressed(KeyEvent.VK_UP);
     }
 
     @Override
-    public boolean isRequstingDown() {
+    public boolean isRequestingDown() {
         return input.isPressed(KeyEvent.VK_DOWN);
     }
 
     @Override
-    public boolean isRequstingLeft() {
+    public boolean isRequestingLeft() {
         return input.isPressed(KeyEvent.VK_LEFT);
     }
 
     @Override
-    public boolean isRequstingRight() {
+    public boolean isRequestingRight() {
         return input.isPressed(KeyEvent.VK_RIGHT);
     }
 }
