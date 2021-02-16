@@ -5,16 +5,16 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpriteLibary {
+public class SpriteLibrary {
    private final static String PATH_TO_UNITS ="/sprites/units";
-    private Map<String, SpriteSet> units;
+    private final Map<String, SpriteSet> units;
 
-    public SpriteLibary() {
+    public SpriteLibrary() {
         units = new HashMap<>();
         loadSpritesFromDisk();
     }
     private void loadSpritesFromDisk(){
-String[]folderNames = getFolderNames(PATH_TO_UNITS);
+String[]folderNames = getFolderNames();
 for(String folderName: folderNames){
     SpriteSet spriteSet = new SpriteSet();
     String pathToFolder = PATH_TO_UNITS +"/"+ folderName;
@@ -24,22 +24,28 @@ for(String folderName: folderNames){
                 sheetsName.substring(0,sheetsName.length()-4),
                 ImageUtils.loadImage(pathToFolder+"/"+ sheetsName));
     }
+    units.put(folderName,spriteSet);
+
 
 }
 
     }
 
     private String[] getSheetsInFolder(String basePath) {
-        URL resource = SpriteLibary.class.getResource(basePath);
+        URL resource = SpriteLibrary.class.getResource(basePath);
         File file = new File(resource.getFile());
         return file.list((current,name)->new File(current,name).isFile());
     }
 
 
-    private String[] getFolderNames(String basePath) {
-       URL resource = SpriteLibary.class.getResource(basePath);
+    private String[] getFolderNames() {
+       URL resource = SpriteLibrary.class.getResource(SpriteLibrary.PATH_TO_UNITS);
        File file = new File(resource.getFile());
        return file.list((current,name)->new File(current,name).isDirectory());
+    }
+
+    public SpriteSet getUnit(String name) {
+        return units.get(name);
     }
 }
 
