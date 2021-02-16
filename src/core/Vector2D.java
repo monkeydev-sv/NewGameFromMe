@@ -1,7 +1,5 @@
 package core;
 
-
-
 public class Vector2D {
 
     private double x;
@@ -35,4 +33,3 @@ public class Vector2D {
         return y;
     }
 }
-

@@ -1,17 +1,20 @@
 package display;
 
 import game.Game;
+import game.state.State;
+import input.Input;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import input.Input;
+
 public class Display extends JFrame {
-    Canvas canvas;
+
+    private Canvas canvas;
     private Renderer renderer;
 
-    public Display(int width, int height , Input input) {
-        setTitle ("My New game.Game");
+    public Display(int width, int height, Input input) {
+        setTitle("My new game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -25,16 +28,20 @@ public class Display extends JFrame {
         pack();
 
         canvas.createBufferStrategy(3);
+
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    public void render(Game game){
-        BufferStrategy bufferStrategy = canvas.getBufferStrategy();
-        Graphics graphics =bufferStrategy.getDrawGraphics();
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
 
-renderer.render(game,graphics);
+    public void render(State state){
+        BufferStrategy bufferStrategy = canvas.getBufferStrategy();
+        Graphics graphics = bufferStrategy.getDrawGraphics();
+
+        graphics.setColor(Color.BLACK);
+        graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        renderer.render(state, graphics);
+
         graphics.dispose();
         bufferStrategy.show();
     }

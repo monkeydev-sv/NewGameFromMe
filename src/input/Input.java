@@ -4,10 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Input implements KeyListener {
+
     private boolean[] pressed;
 
-    public Input(){
-        pressed =new boolean[255];
+    public Input() {
+        pressed = new boolean[255];
     }
 
     public boolean isPressed(int keyCode) {
@@ -15,12 +16,11 @@ public class Input implements KeyListener {
     }
 
     @Override
-    public void keyTyped(KeyEvent e) { }
+    public void keyTyped(KeyEvent e) {}
 
     @Override
     public void keyPressed(KeyEvent e) {
-pressed[e.getKeyCode()] = true;
-
+        pressed[e.getKeyCode()] = true;
     }
 
     @Override

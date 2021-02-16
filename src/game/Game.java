@@ -1,41 +1,34 @@
 package game;
 
-import controller.PlayerController;
+import core.Size;
 import display.Display;
-import entity.GameObject;
-import entity.Player;
-import gfx.SpriteLibrary;
+
+import game.state.GameState;
+import game.state.State;
+
 import input.Input;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Game {
 
     public static int SPRITE_SIZE = 64;
 
     private Display display;
-    private List<GameObject> gameObjects;
     private Input input;
-    private SpriteLibrary spriteLibrary;
+    private State state;
 
     public Game(int width, int height) {
         input = new Input();
         display = new Display(width, height, input);
-        gameObjects = new ArrayList<>();
-        spriteLibrary = new SpriteLibrary();
-        gameObjects.add(new Player(new PlayerController(input), spriteLibrary));
+        state = new GameState(new Size(width,height),input);
     }
 
     public void update() {
-        gameObjects.forEach(gameObject -> gameObject.update());
+        state.update();
     }
 
     public void render() {
-        display.render(this);
-    }
-
-    public List<GameObject> getGameObjects() {
-        return gameObjects;
+        display.render(state);
     }
 }

@@ -1,7 +1,5 @@
 package gfx;
 
-
-
 import core.Direction;
 import game.Game;
 
@@ -22,7 +20,6 @@ public class AnimationManager {
         this.frameIndex = 0;
         this.currentFrameTime = 0;
         this.directionIndex = 0;
-
         playAnimation("stand");
     }
 
@@ -37,12 +34,13 @@ public class AnimationManager {
 
     public void update(Direction direction) {
         currentFrameTime++;
-directionIndex = direction.getAnimationRow();
+        directionIndex = direction.getAnimationRow();
+
         if(currentFrameTime >= updatesPerFrame) {
             currentFrameTime = 0;
             frameIndex++;
 
-            if(frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE - 1) {
+            if(frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE) {
                 frameIndex = 0;
             }
         }

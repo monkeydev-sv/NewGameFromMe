@@ -1,15 +1,17 @@
 package controller;
 
-import controller.Controller;
 import input.Input;
 
 import java.awt.event.KeyEvent;
 
 public class PlayerController implements Controller {
-private Input input;
-public PlayerController(Input input){
-    this.input = input;
-}
+
+    private Input input;
+
+    public PlayerController(Input input) {
+        this.input = input;
+    }
+
     @Override
     public boolean isRequestingUp() {
         return input.isPressed(KeyEvent.VK_UP);

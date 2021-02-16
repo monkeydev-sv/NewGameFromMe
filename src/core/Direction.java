@@ -1,7 +1,7 @@
 package core;
 
 public enum Direction {
-S(0),
+    S(0),
     SW(1),
     W(2),
     NW(3),
@@ -10,13 +10,12 @@ S(0),
     E(6),
     SE(7);
 
-
     private int animationRow;
-    Direction(int animationRow){
+
+    Direction(int animationRow) {
         this.animationRow = animationRow;
-
-
     }
+
     public static Direction fromMotion(Motion motion) {
         double x = motion.getVector().getX();
         double y = motion.getVector().getY();
