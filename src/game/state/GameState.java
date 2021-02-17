@@ -14,19 +14,17 @@ import java.util.List;
 
 public class GameState extends State {
 
-    public GameState(Size windowSize,Input input) {
-        super(windowSize,input);
-
+    public GameState(Size windowSize, Input input) {
+        super(windowSize, input);
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);
-
-        initializedCharacters();
+        initializeCharacters();
     }
 
-    private void initializedCharacters() {
+    private void initializeCharacters() {
         Player player = new Player(new PlayerController(input), spriteLibrary);
         NPC npc = new NPC(new NPCController(), spriteLibrary);
-        npc.setPosition(new Position(3* Game.SPRITE_SIZE,2 * Game.SPRITE_SIZE));
+        npc.setPosition(new Position(3 * Game.SPRITE_SIZE, 2 * Game.SPRITE_SIZE));
         gameObjects.addAll(List.of(player, npc));
-        camera.focusOn(player);
+        camera.focusOn(npc);
     }
 }

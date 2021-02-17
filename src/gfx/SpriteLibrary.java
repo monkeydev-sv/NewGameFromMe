@@ -8,8 +8,6 @@ import java.util.Map;
 
 public class SpriteLibrary {
 
-
-
     private Map<String, SpriteSet> units;
     private Map<String, Image> tiles;
 
@@ -59,7 +57,7 @@ public class SpriteLibrary {
     }
 
     private String[] getFolderNames(String basePath) {
-        URL resource = SpriteLibrary.class.getResource("/sprites/units");
+        URL resource = SpriteLibrary.class.getResource(basePath);
         File file = new File(resource.getFile());
         return file.list((current, name) -> new File(current, name).isDirectory());
     }

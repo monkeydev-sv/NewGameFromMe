@@ -1,10 +1,10 @@
 package game.state;
 
-import controller.PlayerController;
+import core.Position;
 import core.Size;
 import display.Camera;
 import entity.GameObject;
-import entity.Player;
+import game.Time;
 import gfx.SpriteLibrary;
 import input.Input;
 import map.GameMap;
@@ -20,28 +20,24 @@ public abstract class State {
     protected SpriteLibrary spriteLibrary;
     protected Input input;
     protected Camera camera;
+    protected Time time;
 
-
-    public State(Size windowSize,Input input) {
+    public State(Size windowSize, Input input) {
         this.input = input;
         gameObjects = new ArrayList<>();
         spriteLibrary = new SpriteLibrary();
         camera = new Camera(windowSize);
-
+        time = new Time();
     }
 
     public void update() {
-        sortObjectByPosition();
-        gameObjects.forEach(gameObject -> gameObject.update());
+        sortObjectsByPosition();
+        gameObjects.forEach(gameObject -> gameObject.update(this));
         camera.update(this);
     }
 
-    private void sortObjectByPosition(){
-       gameObjects.sort(Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
-    }
-
-    public Camera getCamera() {
-        return camera;
+    private void sortObjectsByPosition() {
+        gameObjects.sort(Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
     }
 
     public List<GameObject> getGameObjects() {
@@ -50,5 +46,17 @@ public abstract class State {
 
     public GameMap getGameMap() {
         return gameMap;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public Position getRandomPosition() {
+        return gameMap.getRandomPosition();
     }
 }
