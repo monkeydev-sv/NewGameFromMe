@@ -6,10 +6,10 @@ import java.awt.*;
 
 public class Tile {
 
-    private Image sprite;
+    private final Image sprite;
 
     public Tile(SpriteLibrary spriteLibrary) {
-        this.sprite = spriteLibrary.getTile("default");
+        this.sprite = spriteLibrary.getTile("woodFloor");
     }
 
     public Image getSprite() {
