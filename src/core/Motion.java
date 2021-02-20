@@ -44,4 +44,8 @@ public class Motion {
     public boolean isMoving() {
         return vector.length() > 0;
     }
+
+    public void multiply(double multplier) {
+        vector.multiply(multplier);
+    }
 }

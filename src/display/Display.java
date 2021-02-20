@@ -14,7 +14,7 @@ public class Display extends JFrame {
     private Renderer renderer;
 
     public Display(int width, int height, Input input) {
-        setTitle("My Game");
+        setTitle("Dark Elfs");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
