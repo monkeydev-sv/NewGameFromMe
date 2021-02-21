@@ -9,8 +9,8 @@ import gfx.SpriteLibrary;
 import java.util.Arrays;
 
 public class GameMap {
-    private static final int SAFETY_SPACE = 2;
 
+    private static final int SAFETY_SPACE = 2;
 
     private Tile[][] tiles;
 
@@ -46,16 +46,17 @@ public class GameMap {
 
     public Position getViewaAsGPs(Camera camera) {
         return new Position(
-                Math.max(0,camera.getPosition().getX() / Game.SPRITE_SIZE -SAFETY_SPACE),
-
+                Math.max(0, camera.getPosition().getX() / Game.SPRITE_SIZE - SAFETY_SPACE),
                 Math.max(0, camera.getPosition().getY() / Game.SPRITE_SIZE - SAFETY_SPACE)
         );
     }
 
     public Position getViewaAsGPsE(Camera camera) {
         return new Position(
-                Math.min(tiles.length,camera.getPosition().getX() / Game.SPRITE_SIZE+ camera.getSize().getWidth()/ Game.SPRITE_SIZE + SAFETY_SPACE),
-                Math.min(tiles[0].length, camera.getPosition().getY() / Game.SPRITE_SIZE + camera.getSize().getHeight()/ Game.SPRITE_SIZE +SAFETY_SPACE)
-                );
+                Math.min(tiles.length, camera.getPosition().getX() / Game.SPRITE_SIZE + camera.getSize().getWidth() / Game.SPRITE_SIZE + SAFETY_SPACE),
+                Math.min(tiles[0].length, camera.getPosition().getY() / Game.SPRITE_SIZE + camera.getSize().getHeight() / Game.SPRITE_SIZE + SAFETY_SPACE)
+        );
     }
+
+
 }

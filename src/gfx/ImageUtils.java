@@ -41,4 +41,3 @@ public class ImageUtils {
         return graphicsConfiguration.createCompatibleImage(size.getWidth(), size.getHeight(), transparency);
     }
 }
-
