@@ -10,6 +10,18 @@ public class CollisionBox {
         this.bounds = bounds;
     }
 
+    public static CollisionBox of(Position position, Size size) {
+        return new CollisionBox(
+                new Rectangle(
+                position.intX(),
+                position.intY(),
+                size.getWidth(),
+                size.getHeight()
+        )
+
+        );
+    }
+
     public boolean collidesWith(CollisionBox other) {
         return bounds.intersects(other.getBounds());
     }
