@@ -5,18 +5,19 @@ import core.Size;
 import entity.GameObject;
 import game.Game;
 import game.state.State;
-
+import map.GameMap;
 
 import java.awt.*;
 import java.util.Optional;
 
 public class Camera {
-private static final int SAFETY_SPACE = 2* Game.SPRITE_SIZE;
+
+    private static final int SAFETY_SPACE = 2 * Game.SPRITE_SIZE;
 
     private Position position;
     private Size windowSize;
-    private Rectangle viewBounds;
 
+    private Rectangle viewBounds;
 
     private Optional<GameObject> objectWithFocus;
 
@@ -33,7 +34,6 @@ private static final int SAFETY_SPACE = 2* Game.SPRITE_SIZE;
                 windowSize.getWidth() + SAFETY_SPACE,
                 windowSize.getHeight() + SAFETY_SPACE
         );
-
     }
 
     public void focusOn(GameObject object) {
@@ -74,13 +74,12 @@ private static final int SAFETY_SPACE = 2* Game.SPRITE_SIZE;
         return position;
     }
 
-    public boolean isinView(GameObject gameObject) {
+    public boolean isInView(GameObject gameObject) {
         return viewBounds.intersects(
                 gameObject.getPosition().intX(),
                 gameObject.getPosition().intY(),
                 gameObject.getSize().getWidth(),
                 gameObject.getSize().getHeight());
-
     }
 
     public Size getSize() {

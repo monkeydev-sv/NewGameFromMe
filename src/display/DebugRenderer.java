@@ -9,7 +9,7 @@ public class DebugRenderer {
     public void render(State state, Graphics graphics) {
         Camera camera = state.getCamera();
         state.getGameObjects().stream()
-                .filter(gameObject-> camera.isinView(gameObject))
+                .filter(gameObject-> camera.isInView(gameObject))
         .map(gameObject -> gameObject.getCollisionBox())
                 .forEach(collisionBox -> drawCollisionBox(collisionBox,graphics,camera));
 
