@@ -4,6 +4,10 @@ import core.Position;
 import core.Size;
 
 public class HorizontalContainer extends UIContainer {
+    public HorizontalContainer(Size windowSize) {
+        super(windowSize);
+    }
+
     @Override
     protected Size calculateContentSize() {
         int combinedChildWidth = 0;
